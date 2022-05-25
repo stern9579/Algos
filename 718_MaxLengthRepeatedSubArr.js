@@ -4,41 +4,27 @@
  * @return {number}
  */
 function findLength(nums1, nums2) {
-    var dict = {};
-    var dict2 = {};
-    var length;
+    let p1 = 0;
+    let l = 0;
 
-
-    if(nums1.length >= nums2.length){
-        length = nums1.length
-    } else {
-        length = nums2.length
-    }
-
-    for(let x = 0; x <length; x++){
-        if(dict[nums1[x]]){
-            dict[nums1[x]] += 1;
-        } else if(!dict[nums1[x]]){
-            dict[nums1[x]] = 1;
+    while(p1< nums1.length){
+        tempLength = 0;
+        let p2 = 0
+        while(p2 < nums2.length){
+            if(nums2[p2] == nums1[p1]){
+                tempLength ++;
+                p1++;
+            } 
+            p2++;
         }
-        if(dict2[nums2[x]]){
-            dict2[nums2[x]] += 1;
-        } else if(!dict2[nums2[x]]){
-            dict2[nums2[x]] = 1;
+        if(tempLength > l){
+            l = tempLength;
         }
     }
-
-    for(key in dict){
-        if(dict2[key]){
-            if(dict2[key] < dict[key]){
-                length += dict2[key];
-            } else {
-                length += dict[key];
-            }
-        }
-    }
-    return length;
+    return l;
 };
 
 console.log(findLength([1,2,3,2,1], [3,2,1,4,7]));
 console.log(findLength([0,0,0,0,0], [0,0,0,0,0]));
+console.log(findLength([0,0,0,0,1], [1,0,0,0,0]));
+

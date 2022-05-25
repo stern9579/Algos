@@ -60,3 +60,7 @@ function uncommonFromSentences(s1, s2) {
 };
 
 console.log(uncommonFromSentences("this apple is sweet", "this apple is sour"))
+
+let str = "this apple is sweet"
+
+console.log(str.split(" "));
